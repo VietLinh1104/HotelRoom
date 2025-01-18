@@ -1,6 +1,7 @@
 package com.hotela.Hotela.DTO;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class ProductsDTO {
     private String room_type;
@@ -8,16 +9,27 @@ public class ProductsDTO {
     private int num_beds;
     private String type_bed;
     private int num_room;
+    private List<roomPriceDTO> prices;
+
 
     public ProductsDTO() {
     }
 
-    public ProductsDTO(String room_type, String detail, int num_beds, String type_bed, int num_room) {
+    public ProductsDTO(String room_type, String detail, int num_beds, String type_bed, int num_room, List<roomPriceDTO> prices) {
         this.room_type = room_type;
         this.detail = detail;
         this.num_beds = num_beds;
         this.type_bed = type_bed;
         this.num_room = num_room;
+        this.prices = prices;
+    }
+
+    public List<roomPriceDTO> getPrices() {
+        return prices;
+    }
+
+    public void setPrices(List<roomPriceDTO> prices) {
+        this.prices = prices;
     }
 
     public String getRoom_type() {

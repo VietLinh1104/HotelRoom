@@ -30,7 +30,6 @@ public class Rooms {
     }
 
     public Rooms(Hotels hotels, String room_type, String detail, int num_beds, String type_bed, int num_room, Set<RoomPrices> roomPrices) {
-        this.id = id;
         this.hotels = hotels;
         this.room_type = room_type;
         this.detail = detail;
@@ -108,7 +107,7 @@ public class Rooms {
     public String toString() {
         return "Rooms{" +
                 "id=" + id +
-                ", hotels=" + hotels +
+//                ", hotels=" + hotels +
                 ", room_type='" + room_type + '\'' +
                 ", detail='" + detail + '\'' +
                 ", num_beds=" + num_beds +
