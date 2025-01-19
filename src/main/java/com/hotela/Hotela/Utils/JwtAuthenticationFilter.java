@@ -21,23 +21,23 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        // Lấy token từ header Authorization
+
         String token = request.getHeader("Authorization");
 
         if (token != null && token.startsWith("Bearer ")) {
-            token = token.substring(7); // Lấy phần token sau "Bearer "
+            token = token.substring(7);
 
             try {
-                // Lấy thông tin username từ token
+
                 String email = jwtUtil.extractEmail(token);
 
-                // Nếu token hợp lệ, xác thực người dùng
+
                 if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(email, null, null);
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 
-                    // Đặt thông tin xác thực vào SecurityContext
+
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } catch (Exception e) {
@@ -45,7 +45,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             }
         }
 
-        // Tiếp tục với chuỗi lọc
+
         filterChain.doFilter(request, response);
     }
 }
